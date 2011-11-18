@@ -1,3 +1,6 @@
+Skookum Web App Dev Challenge
+=============================
+
 Greetings, Internet Earthling. 
 
 Resumes, interviews, and portfolios tell us a bit, but they don't show us how you creatively solve problems. That's pretty much the job. We want to be wowed and surprised by your code, so we came up with a really quick demo project that we'd like you to build. 
@@ -21,7 +24,7 @@ STEPS
 
 FUNCTIONAL REQUIREMENTS
 
-1.	App should be deployable on an open-source stack. 
+1.  App should be deployable on an open-source stack. 
 
 2.	User should be able to click on a cat picture in the 'VS' box to vote on that cat in the matchup. 
 
