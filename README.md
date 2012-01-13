@@ -70,7 +70,7 @@ These are purely optional, but if you see a smart way to fit any in, it would be
 
 1.	'Current Results' rendered live - for example, if user A is on the site and user B is voting, it would be great for A to see the the current results update in realtime. 
 
-2.	Cat photo preview before uploading/submitting the new cat.
+2.	Cat photo preview before submitting the new cat contestant.
 
 3.  Responsive, mobile UI.
 
