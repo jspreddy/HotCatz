@@ -82,9 +82,9 @@ DEVELOPMENT & DEPLOYMENT
 
 2.  Please try to commit frequently (around an hour). This is both good practice (we encourage frequent small commits in our own projects) and so we can see your project come to life.
 
-3.  If you have any questions, get in touch with hunter@skookum.com. There are no points lost for clarification.
+3.  If you have any questions, get in touch with mark@skookum.com. There are no points lost for clarification.
 
-4.	Once you're done, deploy it to the VPS server and email an IP link to hunter@skookum.com.
+4.	Once you're done, deploy it to the VPS server and email an IP link to mark@skookum.com.
 
 
 All of the above fun should show off plenty of your programming techniques and style. As always, feel free to surprise us with tricks and ideas of your own. HotCatz very much exemplifies the breadth of projects we take on at Skookum Digital Works. We're building businesses from the ground up, and we're hoping you can help build our team. 
