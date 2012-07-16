@@ -48,9 +48,7 @@ FUNCTIONAL REQUIREMENTS
 
 10. Images should be cropped to be a uniform size (but not stretched). 
 
-11. User should be able to see a preview of the uploaded image. 
-
-12. User should see her cat added to the list of contestants after upload.
+11. User should see her cat added to the list of contestants after upload.
 
 
 NON-FUNCTIONAL REQUIREMENTS
