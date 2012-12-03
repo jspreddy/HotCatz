@@ -71,7 +71,7 @@ These are the types of things our devs, your client, will be looking at when jud
 BONUSES
 -------
 
-These are additional options that you can choose from to express your strengths and make your app stand out. These will count for up to 5 points for each item. Bonus points will be significantly reduced if the functional requirements aren't complete. Make sure to note in your submission all the items you believe you have completed to make sure we don't miss anything. Also make sure any additional forms and buttons fit into site design.
+These are additional options that you can choose from to express your strengths and make your app stand out. These will count for up to 5 points for each item. Bonus points will be significantly reduced if the functional requirements aren't complete. Make sure to note in your submission all the items you believe you have completed to make sure we don't miss anything. Also make sure any additional forms, buttons, etc fit into the site design.
 
 ### Mostly front-end
 
@@ -101,7 +101,10 @@ These are additional options that you can choose from to express your strengths 
 
 5.  Email notifications (if there is user auth built) for when a user's cat gets voted on, reaches #1, etc.
 
-6.  Alternative vote counting strategies or algorithms 
+6.  Alternative vote counting strategies or algorithms. Examples:
+    * We think cats who's name starts with the letter Z are way cooler than other cats. Create a voting strategy that doubles the weight of their votes, but in order to keep the cat electorate from an uprising, a voter can only vote for Zcats during the first 10 mins of each hour.
+    * Instead of simply counting how many votes a cat has, devise a more complex algorithm that takes into account the current rank of each cat in the vote.
+    * Make the voting a bracket tournament when the cats move forward through the rounds before decing on the ultimate victor.
 
 
 DEVELOPMENT & DEPLOYMENT
