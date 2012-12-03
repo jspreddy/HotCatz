@@ -81,7 +81,9 @@ These are additional options that you can choose from to express your strengths 
 
 3.  Responsive, mobile UI. Make sure the responsive design doesn't break the desktop browser experience.
 
-4.  User sessions and/or authentication.
+4.  Implement "Current Results" section seen in PSD file (there is a layer comp) with graph to show votes for current contestants as well as a button to move into upload mode.
+
+5.  User sessions and/or authentication.
     * Some ideas for uses for this (these are just some ideas, feel free to add anything that makes sense):
         * A banner on any cats that the user has uploaded themselves.
         * A way for the user to track all of their votes (maybe a toggle on the leaderboard between public results and the user's results from their own votes)
