@@ -68,7 +68,7 @@ These are the types of things our devs, your client, will be looking at when jud
 
 
 
-BONUSES (max pts)
+BONUSES
 -------
 
 These are additional options that you can choose from to express your strengths and make your app stand out. These will count for up to 5 points for each item. Bonus points will be significantly reduced if the functional requirements aren't complete. Make sure to note in your submission all the items you believe you have completed to make sure we don't miss anything. Also make sure any additional forms and buttons fit into site design.
@@ -77,7 +77,7 @@ These are additional options that you can choose from to express your strengths 
 
 1.	Site runs as a one-page app without refreshes. For example, if user A is on the site and user B is voting, it would be great for A to see the the leaderboard update in realtime. Same goes for new cats being added by other users.
 
-2.	Cat photo preview before submitting the new cat contestant.
+2.	Cat photo preview and/or cropping functionality before submitting the new cat contestant.
 
 3.  Responsive, mobile UI. Make sure the responsive design doesn't break the desktop browser experience.
 
@@ -94,6 +94,14 @@ These are additional options that you can choose from to express your strengths 
 1.  Fully tested data models
 
 2.  Build back-end as fully featured API that the front end interfaces with. A basic API documentation page will be nice as well.
+
+3.  Admin interface with login to edit cats (names, votes, etc.) or delete them from the app.
+
+4.  Caching system for ajax calls
+
+5.  Email notifications (if there is user auth built) for when a user's cat gets voted on, reaches #1, etc.
+
+6.  Alternative vote counting strategies or algorithms 
 
 
 DEVELOPMENT & DEPLOYMENT
