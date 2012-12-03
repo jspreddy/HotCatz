@@ -53,16 +53,16 @@ When your application is handed to another developer after you're done, they sho
 
 
 
-NON-FUNCTIONAL REQUIREMENTS (max 20 pts)
+NON-FUNCTIONAL REQUIREMENTS (max 12 pts)
 -------
 
-These are the types of things our devs, your client, will be looking at when judging your app to determine how well you met the functional requirement. You will be given up to 5 bonus points for each item that is deemed to have been done well.
+These are the types of things our devs, your client, will be looking at when judging your app to determine how well you met the functional requirement. You will be given up to 3 bonus points for each item that is deemed to have been done well.
 
 1.  Markup should be semantic and SEO-friendly. CSS should be clean and simple.
 
 2.  Server code should be only what is needed for the app without an unnecessarily complicated architecture design.
 
-3.  Design of the page matches original design as closely as possible.
+3.  Design of the page matches original design as closely as possible. This will be mostly tested in Chrome and Safari. Should also look good in other browsers including at least being not completely broken in IE8.
 
 4.  Overall, the site is bug free (WARNING: we will try to break it to see how this holds up).
 
@@ -81,7 +81,7 @@ These are additional options that you can choose from to express your strengths 
 
 3.  Responsive, mobile UI. Make sure the responsive design doesn't break the desktop browser experience.
 
-4.  User sessions.
+4.  User sessions and/or authentication.
     * Some ideas for uses for this (these are just some ideas, feel free to add anything that makes sense):
         * A banner on any cats that the user has uploaded themselves.
         * A way for the user to track all of their votes (maybe a toggle on the leaderboard between public results and the user's results from their own votes)
