@@ -110,7 +110,7 @@ These are additional options that you can choose from to express your strengths 
 DEVELOPMENT & DEPLOYMENT
 ------------------------
 
-1.	Development is totes your call. Ruby, node, Python, PHP, Clojure, Erlang - use whatever open-source stack shows you off the best.
+1.	Development is totes your call. Ruby, node, Python, PHP, Clojure, Erlang - use whatever open-source stack shows you off the best. We recommend though you use whatever you feel most comfortable with. This project is not the project to learn a whole new framework. If you are concerned about your stack just check with mark@skookum.com
 
 2.  Please try to commit frequently (around an hour). This is both good practice (we encourage frequent small commits in our own projects) and so we can see your project come to life.
 
