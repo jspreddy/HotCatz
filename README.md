@@ -31,7 +31,7 @@ STEPS
 FUNCTIONAL REQUIREMENTS (max 18 pts)
 -----------------------
 
-When your application is handed to another developer after you're done, they should be able to say "YES" to everything on this list. You will be scored with 0-2 points by each developer that reviews your submission.  0 will mean the requirement is not met. 1 will mean the requirement is basically met, but there are lots of problems with it. 2 means the requirement meets all needs and standards.
+When your application is handed to another developer after you're done, they should be able to say "YES" to everything on this list. You will be scored with 0-2 points by each developer that reviews your submission.  0 will mean the requirement is not met. 1 will mean the requirement is basically met, but there are definite problems with it. 2 means the requirement meets all needs and standards.
 
 1.  App should be deployed on an open-source stack on given server.
 
@@ -53,7 +53,7 @@ When your application is handed to another developer after you're done, they sho
 
 
 
-NON-FUNCTIONAL REQUIREMENTS (max 15 pts)
+NON-FUNCTIONAL REQUIREMENTS (max 20 pts)
 -------
 
 These are the types of things our devs, your client, will be looking at when judging your app to determine how well you met the functional requirement. You will be given up to 5 bonus points for each item that is deemed to have been done well.
@@ -63,6 +63,8 @@ These are the types of things our devs, your client, will be looking at when jud
 2.  Server code should be only what is needed for the app without an unnecessarily complicated architecture design.
 
 3.  Design of the page matches original design as closely as possible.
+
+4.  Overall, the site is bug free (WARNING: we will try to break it to see how this holds up).
 
 
 
@@ -91,7 +93,7 @@ These are additional options that you can choose from to express your strengths 
 
 1.  Fully tested data models
 
-2.  Build back-end as fully featured API that the front end interfaces with. A basic API documentation page will add 
+2.  Build back-end as fully featured API that the front end interfaces with. A basic API documentation page will be nice as well.
 
 
 DEVELOPMENT & DEPLOYMENT
