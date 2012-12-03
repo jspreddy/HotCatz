@@ -18,7 +18,7 @@ STEPS
 
 1.	Clone this git repository.
 
-2.	Use the PSD in the /assets directory (it has layer comps) to create a single-page web app with the following functional requirements, non-functional requirements, and (optional) bonuses. This is designed to take 1-3 days.
+2.	Use the PSD in the /assets directory (it has layer comps) to create a web app with the following functional requirements, non-functional requirements, and (optional) bonuses. This is designed to take 1-3 days.
 
 3. 	Deploy your app to the Linode VPS. This is your box, so do whatever you like with it:
 
