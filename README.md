@@ -68,10 +68,10 @@ These are the types of things our devs, your client, will be looking at when jud
 
 
 
-BONUSES
+BONUSES  (max 60 pts, 24 if not all functional requirements complete with at least 1 point)
 -------
 
-These are additional options that you can choose from to express your strengths and make your app stand out. These will count for up to 5 points for each item. Bonus points will be significantly reduced if the functional requirements aren't complete. Make sure to note in your submission all the items you believe you have completed to make sure we don't miss anything. Also make sure any additional forms, buttons, etc fit into the site design.
+These are additional options that you can choose from to express your strengths and make your app stand out. These will count for up to 5 points for each item if all functional requirements are met above (at least 1 point), or 2 if they are not. Make sure to note in your submission all the items you believe you have completed to make sure we don't miss anything. Also make sure any additional forms, buttons, etc fit into the site design.
 
 ### Mostly front-end
 
