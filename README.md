@@ -43,7 +43,7 @@ When your application is handed to another developer after you're done, they sho
 
 5.	User should be able to select a local image file to upload. 
 
-6.	User should be able to input his/her cat's name. 
+6.	User should be able to input his/her cat's name which should be unique.
 
 7.	User should be able to upload the name/image file pair. 
 
