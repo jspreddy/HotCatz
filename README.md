@@ -22,9 +22,9 @@ STEPS
 
 3. 	Deploy your app to the Linode VPS. This is your box, so do whatever you like with it:
 
-		ip: 0.0.0.0
+		ip: 192.155.92.143
 		user: root
-		password: pass
+		password: W68dyvVMNruFe
 
 
 
