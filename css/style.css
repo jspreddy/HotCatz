@@ -1,0 +1,81 @@
+root { 
+    display: block;
+}
+
+html{
+	padding:0;
+	margin:0;
+	background-color:#efefef;
+}
+body{
+	margin:0 auto;
+	padding:0;
+	background-color:#efefef;
+	background-image:url('../img/bgTexture.png');
+	background-repeat: repeat;
+}
+.max-width-580{
+	max-width:580px;
+}
+.mainHeader{
+	margin:0 auto;
+	height:80px;
+	background-image:url('../img/horz-hr-bg.png');
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+.mainFooter{
+	height:90px;
+	background-image:url('../img/footerBG.png');
+	background-repeat: repeat-x;
+	background-position:left;
+}
+.footerText{
+	color:#bbbbbb;
+	margin:44px 0px 0px 9px;
+	float:left;
+}
+.footerBWlogo{
+	margin:33px 10px 0px 0px;
+	height:31px;
+	width:108px;
+	background-image:url('../img/logo_white.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	float:right;
+}
+#logo{
+	background-image: url('../img/logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	display:block;
+	height:55px;
+	width:178px;
+	float:left;
+	margin:15px 0px 0px 9px;
+}
+#titleCaption{
+	float:right;
+	height:20px;
+	font-size:14px;
+	font-family: HelveticaNeue, arial;
+	color:#38190b;
+	margin:48px 0px 0px 0px;
+}
+
+.centerWithMargin{
+	margin:0 auto;
+}
+.form-signin {
+  max-width: 500px;
+  margin: 15px auto;
+}
+
+.margin-auto{
+	margin:0 auto;
+}
+
+
+
+/* End of file style.css */
+/* Location:  /css/style.css */

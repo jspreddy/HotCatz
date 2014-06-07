@@ -37,5 +37,13 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+/*
+|--------------------------------------------------------------------------
+| Application specific constants
+|--------------------------------------------------------------------------
+*/
+
+define('APPLICATION_NAME',		'HotCatz-jspreddy');
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
