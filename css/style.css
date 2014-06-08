@@ -16,13 +16,22 @@ body{
 }
 .max-width-580{
 	max-width:580px;
+	-webkit-box-sizing: content-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: content-box;    /* Firefox, other Gecko */
+	box-sizing: content-box;
+}
+.padding_0{
+	padding:0 !important;
+}
+.clearFloat{
+	clear:both;
 }
 .mainHeader{
 	margin:0 auto;
-	height:80px;
 	background-image:url('../img/horz-hr-bg.png');
 	background-repeat: repeat-x;
 	background-position: bottom;
+	overflow:auto;
 }
 .mainFooter{
 	height:90px;
@@ -52,7 +61,11 @@ body{
 	height:55px;
 	width:178px;
 	float:left;
-	margin:15px 0px 0px 9px;
+	margin:15px 0px 12px 9px;
+}
+#logoLink{
+	display:inline-block;
+	overflow:auto;
 }
 #titleCaption{
 	float:right;
@@ -75,7 +88,75 @@ body{
 	margin:0 auto;
 }
 
+.votingContainer{
+	width:100%;
+	position:relative;
+}
+.graphAndAddContainer{}
+.leaderBoardContainer{}
 
+.imageContainer{
+	background-color:#ffffff;
+	border:5px solid #FFFFFF;
+	position:relative;
+	width:48%;
+}
+.leftImgShadow{
+	box-shadow: -11px 15px 16px -8px #bbbbbb;
+}
+.rightImgShadow{
+	box-shadow: 11px 15px 16px -8px #bbbbbb;
+}
+.bannerContainer{
+	width:100%;
+	position:absolute;
+	top:72%;
+}
+.photoBanner{
+	width:43%;
+	position:relative;
+}
+.leftBanner{
+	float:left;
+	left:-12px;
+}
+.rightBanner{
+	float:right;
+	right:-12px;
+}
+.bannerText{
+	position:absolute;
+	width:77%;
+	top:34%;
+	color:#FFFFFF;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:1em;
+	height:50%;
+	overflow:hidden;
+}
+.bannerTextLeft{
+	left:18%;
+	text-align: left;
+	text-shadow: 0px -1px 2px #1b6195;
+}
+.bannerTextRight{
+	right:18%;
+	text-align: right;
+	text-shadow: 0px -1px 2px #a15323;
+}
 
+.vsFlag{
+	position:absolute;
+	float:left;
+	top:40%;
+	left:42%;
+	width:16%;
+}
+
+.horzSpacer{
+	height:20px;
+	width:100%;
+}
 /* End of file style.css */
 /* Location:  /css/style.css */

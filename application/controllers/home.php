@@ -10,6 +10,7 @@ class Home extends MY_Controller{
 	{
 		$this->load->view('components/header');
 		$this->load->view('components/navBar');
+		$this->load->view('home_page');
 		$this->load->view('components/footer');
 	}
 }

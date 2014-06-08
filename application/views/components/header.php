@@ -10,12 +10,12 @@
 		<script src="<?php echo base_url('js/bootstrap.min.js');?>"></script>
 	</head>
 	<body>
-		<div class="container max-width-580">
+		<div class="container max-width-580 padding_0">
 		<header class="mainHeader max-width-580">
-			<a href="<?php echo site_url('/home'); ?>" >
+			<a class="logoLink" href="<?php echo site_url('/home'); ?>" >
 				<div id="logo"></div>
 			</a>
-			<div id="titleCaption">We won't stop until we find the cutest cat in the world!</div>
+			<div id="titleCaption" >We won't stop until we find the cutest cat in the world!</div>
 		</header>
 <?php
 /* End of file header.php */
