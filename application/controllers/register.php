@@ -1,6 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Register extends CI_Controller{
+	private $email_verifications;
 	
 	public function __construct()
 	{
@@ -11,6 +12,7 @@ class Register extends CI_Controller{
 		{
 			redirect('/home');
 		}
+		$this->email_verifications = $this->config->item('email_verifications');
 	}
 	
 	public function index($val_errors = null)
@@ -57,9 +59,16 @@ class Register extends CI_Controller{
 		}
 		else
 		{
+			if($this->email_verifications){
+				// if we are doing email verifications, then store the email verified as false else make it true.
+				$email_verified = false;
+			}
+			else{
+				$email_verified = true;
+			}
 			// save data and email verification.
 			$save_data["uname"] = $this->input->post("username");
-			$save_data["email_verified"] = FALSE;
+			$save_data["email_verified"] = $email_verified;
 			$save_data["passwd"] = $this->encrypt->sha1($this->input->post("password"));
 			$save_data["veri_code"] = random_string('alnum',6);
 			
@@ -69,20 +78,24 @@ class Register extends CI_Controller{
 				$this->index("Unknown error while saving data.");
 				return false;
 			}
-			
-			$this->load->library('email');
-			
-			$this->email->from('jspreddy@yahoo.com', 'HotCatz-jspreddy');
-			$this->email->to($save_data["uname"]);
-			
-			$this->email->subject('Email verification for HotCatz-jspreddy application');
-			$message = 'Please verify your email by clicking the following link.\n\r <br/> ';
-			$message .= site_url('/register/verify')."/".$result."_".$save_data["veri_code"];
-			$this->email->message($message);
+			if($this->email_verifications){
+				$this->load->library('email');
 
-			$this->email->send();
-			
-			$this->_display_alert_page("alert-success", "An email has been sent to ".$save_data["uname"].". Please go verify.");
+				$this->email->from('jspreddy@yahoo.com', 'HotCatz-jspreddy');
+				$this->email->to($save_data["uname"]);
+
+				$this->email->subject('Email verification for HotCatz-jspreddy application');
+				$message = 'Please verify your email by clicking the following link.\n\r <br/> ';
+				$message .= site_url('/register/verify')."/".$result."_".$save_data["veri_code"];
+				$this->email->message($message);
+
+				$this->email->send();
+
+				$this->_display_alert_page("alert-success", "An email has been sent to <b>".$save_data["uname"]."</b>. Please go verify.");
+			}
+			else{
+				$this->_display_alert_page("alert-success", "Your registration is a success, you can now login. Click on the logo above to go to login page.");
+			}
 		}
 	}
 	
