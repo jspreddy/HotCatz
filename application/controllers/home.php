@@ -9,7 +9,7 @@ class Home extends MY_Controller{
 	public function index($val_errors = null)
 	{
 		$this->load->view('components/header');
-		$this->load->view('components/navBar');
+		$this->load->view('components/navBar', $this->data);
 		$this->load->view('home_page');
 		$this->load->view('components/footer');
 	}

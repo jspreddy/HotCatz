@@ -24,12 +24,34 @@
 </div>
 
 <div class="graphAndAddContainer">
-	
-	
+	<div class="segment currentResultsSegment">
+		<div class="segmentTitle currentResultsTitle">
+			<img src="<?php echo base_url('/img/currentResults.png'); ?>" height="100%" width="100%" />
+		</div>
+		<div class="well segmentContentContainer">
+			
+		</div>
+	</div>
+	<div class="segment whatsThisSegment">
+		<div class="segmentTitle whatsThisTitle">
+			<img src="<?php echo base_url('/img/whatsThis.png'); ?>" height="100%" width="100%" />
+		</div>
+		<div class="well segmentContentContainer">
+			
+		</div>
+	</div>
+	<div class="clearFloat"></div>
 </div>
 
+<div class="horzRule"></div>
+
 <div class="leaderBoardContainer">
-	
+	<div class="segment leaderBoardSegment">
+		<div class="segmentTitle leaderBoardTitle">
+			<img src="<?php echo base_url('/img/leaderBoard.png'); ?>" height="100%" width="100%" />
+		</div>
+		<div class="well segmentContentContainer"></div>
+	</div>
 </div>
 
 <?php

@@ -25,16 +25,16 @@ class MY_Controller extends CI_Controller{
 		$this->userId = intval( $this->session->userdata('userid') );
 		
 		$this->data=array(
-			'appName'=>APPLICATION_NAME,
-			'fullUserName'=> $this->session->userdata('username')
+			'data_appName'=>APPLICATION_NAME,
+			'data_username'=> $this->session->userdata('uname')
 		);
 	}
 	
-	private function _get_uname(){
+	protected function _get_uname(){
 		return $this->uname;
 	}
 	
-	private function _get_userId(){
+	protected function _get_userId(){
 		return $this->userId;
 	}
 }
