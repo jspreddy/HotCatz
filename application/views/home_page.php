@@ -29,8 +29,21 @@
 		<div class="segmentTitle currentResultsTitle">
 			<img src="<?php echo base_url('/img/currentResults.png'); ?>" height="100%" width="100%" />
 		</div>
-		<div class="well segmentContentContainer">
-			
+		<div class="well segmentContentContainer padding_0">
+			<div class="graphContainer" id="graphContainer">
+				<div id="graphA" class="graph graphA blueGradient">
+					<div class="graphTextContainer">
+						<div class="graphName"></div>
+						<div class="graphVotes"></div>
+					</div>
+				</div>
+				<div id="graphB" class="graph graphB orangeGradient">
+					<div class="graphTextContainer">
+						<div class="graphName"></div>
+						<div class="graphVotes"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="segment whatsThisSegment" id="whatsThisSegment">
@@ -41,7 +54,7 @@
 			<div class="whatsThisInfoContainer">
 				<div class="whatsThisInfoWrapper">
 					<div class="whatsThisInfo">Hotcatz pits one feline against another in furry vs furry battle. Does YOUR cat have what it takes to be a Hotcatz superstar?</div>
-					<div class="whatsThisInfoButton"><div><span class="glyphicon glyphicon-plus"></span> New Competitor </div><div>(upload your cat)</div></div>
+					<div class="whatsThisInfoButton orangeGradient"><div><span class="glyphicon glyphicon-plus"></span> New Competitor </div><div>(upload your cat)</div></div>
 				</div>
 			</div>
 			<div class="uploaderContainer">
@@ -50,9 +63,15 @@
 				</div>
 				<div class="uploadFormContainer">
 					<form method="post" id="catUploadForm" class="form-horizontal" action="<?php echo site_url('api/add');?>">
-						<input type="text" class="uploadInput" name="catname" id="catname" placeholder="Your cat's name" required/>
-						<input type="file" class="uploadSelectFile" name="catpic" id="catpic" required/>
-						<input type="submit" value="Upload!" />
+						<div class="uploadButtonsTopMargin">
+							<input type="text" class="uploadInput" name="catname" id="catname" placeholder="Your cat's name" required/>
+						</div>
+						<div class="uploadButtonsTopMargin">
+							<input class="btn greyGradient uploadButton" type="file" class="uploadSelectFile" name="catpic" id="catpic" required/>
+						</div>
+						<div class="uploadButtonsTopMargin">
+							<input class="btn orangeGradient uploadButton" type="submit" value="Upload!" />
+						</div>
 					</form>
 					<div class="" id="uploadResult"></div>
 				</div>
@@ -181,6 +200,7 @@
 				}
 				else{
 					loadNewMatchupData(returnData.data.matchup);
+					setBarGraph(returnData.data.matchup);
 					$('.votingContainer').show();
 				}
 			});
@@ -246,6 +266,25 @@
 				i++;
 			});
 			$('#lbContent').append("<div class='clearFloat'></div>");
+		}
+		
+		function setBarGraph(data){
+			data[0].voteweight = parseInt(data[0].voteweight);
+			data[1].voteweight = parseInt(data[1].voteweight);
+			var totalHeight = parseInt($('#graphContainer').css("height").substring(-2));
+			var totalWeight = data[0].voteweight + data[1].voteweight;
+			var graphAHeight = ( totalHeight * data[0].voteweight)/totalWeight;
+			var graphBHeight = ( totalHeight * data[1].voteweight)/totalWeight;
+			
+			var graphA = $('#graphA');
+			graphA.css("height",graphAHeight+"px");
+			graphA.find('.graphName').html(data[0].name);
+			graphA.find('.graphVotes').html(data[0].voteweight+" votes");
+			
+			var graphB = $('#graphB');
+			graphB.css("height",graphBHeight+"px");
+			graphB.find('.graphName').html(data[1].name);
+			graphB.find('.graphVotes').html(data[1].voteweight+" votes");
 		}
 		
 	});
