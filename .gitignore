@@ -1,1 +1,12 @@
 /nbproject/private/
+
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+imagestore/*
+!imagestore/index.html
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
