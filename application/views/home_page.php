@@ -1,5 +1,5 @@
 <div class="alert displayNone" id="alertBox"></div>
-<div class="votingContainer">
+<div class="votingContainer displayNone">
 	<div class="imageContainer imgLeft pull-left leftImgShadow">
 		<img class="voteImg" id="leftVoteImage" src="" height="100%" width="100%" />
 	</div>
@@ -174,9 +174,11 @@
 			}).done(function(returnData){
 				if(returnData.error !== ""){
 					alertBox.error(returnData.error);
+					$('.votingContainer').hide();
 				}
 				else{
 					loadNewMatchupData(returnData.data.matchup);
+					$('.votingContainer').show();
 				}
 			});
 		};
