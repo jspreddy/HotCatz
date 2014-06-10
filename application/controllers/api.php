@@ -129,7 +129,7 @@ class Api extends MY_Controller{
 		for($i=0; $i<count($leaderBoard); $i++){
 			$this->result["data"]["leaderBoard"][$i]["catId"]=$leaderBoard[$i]->catId_pk;
 			$this->result["data"]["leaderBoard"][$i]["isMine"]= ( $this->_get_userId() == $leaderBoard[$i]->userId_fk ? true : false ) ;
-			$this->result["data"]["leaderBoard"][$i]["cname"]=character_limiter($leaderBoard[$i]->cname, 6);
+			$this->result["data"]["leaderBoard"][$i]["cname"]=ellipsize($leaderBoard[$i]->cname, 6,1);
 			$this->result["data"]["leaderBoard"][$i]["voteweight"]=$leaderBoard[$i]->voteweight;
 			$this->result["data"]["leaderBoard"][$i]["cimage"]=base_url("/imagestore/".$leaderBoard[$i]->cimage);
 		}
