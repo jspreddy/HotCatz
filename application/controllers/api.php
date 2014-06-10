@@ -106,6 +106,7 @@ class Api extends MY_Controller{
 			$this->result["data"]["matchup"][$i]["id"]=$cats[$i]->catId_pk;
 			$this->result["data"]["matchup"][$i]["name"]=$cats[$i]->cname;
 			$this->result["data"]["matchup"][$i]["cimage"]=base_url("/imagestore/".$cats[$i]->cimage);
+			$this->result["data"]["matchup"][$i]["voteweight"]=$cats[$i]->voteweight;
 		}
 		
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
