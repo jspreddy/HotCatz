@@ -70,7 +70,7 @@ class Register extends CI_Controller{
 			$save_data["uname"] = $this->input->post("username");
 			$save_data["email_verified"] = $email_verified;
 			$save_data["passwd"] = $this->encrypt->sha1($this->input->post("password"));
-			$save_data["veri_code"] = random_string('alnum',6);
+			$save_data["veri_code"] = random_string('alnum',TOKEN_SIZE);
 			
 			$result = $this->user->insert($save_data);
 			

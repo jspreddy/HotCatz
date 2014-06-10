@@ -1,19 +1,20 @@
+<div class="alert displayNone" id="alertBox"></div>
 <div class="votingContainer">
 	<div class="imageContainer imgLeft pull-left leftImgShadow">
-		<img src="http://lorempixel.com/268/295" height="100%" width="100%" />
+		<img class="voteImg" id="leftVoteImage" src="" height="100%" width="100%" />
 	</div>
 	<div class="imageContainer imgRight pull-right rightImgShadow">
-		<img src="http://lorempixel.com/268/295" height="100%" width="100%" />
+		<img class="voteImg" id="rightVoteImage" src="" height="100%" width="100%" />
 	</div>
 	<div class="bannerContainer">
 		<div class="leftBanner photoBanner">
 			<img src="<?php echo base_url('/img/leftFlag.png'); ?>" height="100%" width="100%"/>
-			<div class="bannerText bannerTextLeft">Chester the great</div>
+			<div id="leftVoteName" class="bannerText bannerTextLeft">Chester the great</div>
 		</div>
 		
 		<div class="rightBanner photoBanner">
 			<img src="<?php echo base_url('/img/rightFlag.png'); ?>" height="100%" width="100%"/>
-			<div class="bannerText bannerTextRight">Morris</div>
+			<div id="rightVoteName" class="bannerText bannerTextRight">Morris</div>
 		</div>
 	</div>
 	<div class="vsFlag">
@@ -78,7 +79,29 @@
 	var whatsThisSegment_init_left;
 	var requestNumber = 0;
 	$(document).ready(function(){
+		var alertBox = $('#alertBox');
+		
+		alertBox.success = function (msg){
+			$(this).html(msg)
+					.addClass('alert-success')
+					.removeClass('alert-danger, alert-warning')
+					.stop(true,true)
+					.show()
+					.delay(4000)
+					.fadeOut(ANIMATION_DURATION);
+		};
+		alertBox.error = function(msg){
+			$(this).html(msg)
+					.addClass('alert-danger')
+					.removeClass('alert-success, alert-warning')
+					.stop(true,true)
+					.show()
+					.delay(4000)
+					.fadeOut(ANIMATION_DURATION);
+		};
+		
 		var whatsThisSegment = $("#whatsThisSegment");
+		
 		$('#whatsThisTitle, .whatsThisInfoButton').on('click', function(){
 			if(segmentInView === true){
 				//animate back
@@ -91,7 +114,6 @@
 			else{
 				//animate into view
 				whatsThisSegment_init_left = whatsThisSegment.css("left");
-				console.log(whatsThisSegment_init_left);
 				whatsThisSegment.animate({
 					left:"0%"
 				},ANIMATION_DURATION,function(){
@@ -123,6 +145,54 @@
 			});
 			
 		});
+		
+		$('.imageContainer').on('click',function(){
+			var voteImage = $(this).children(".voteImg");
+			var data={
+				id:voteImage.attr('data-id'),
+				voteToken:voteImage.attr('data-votetoken')
+			};
+			$.ajax({
+				url: "<?php echo site_url('/api/vote');?>",
+				type: "POST",
+				data:data
+			}).done(function(returnData){
+				if(returnData.error !== ""){
+					alertBox.error(returnData.error);
+				}
+				else{
+					//alertBox.success("Voting success.");
+					getNewMatchup();
+				}
+			});
+		});
+		
+		function getNewMatchup(){
+			$.ajax({
+				url: "<?php echo site_url('/api/getNewMatchup');?>",
+				type: "POST"
+			}).done(function(returnData){
+				if(returnData.error !== ""){
+					alertBox.error(returnData.error);
+				}
+				else{
+					loadNewMatchupData(returnData.data.matchup);
+				}
+			});
+		};
+		getNewMatchup();
+		
+		function loadNewMatchupData(data){
+			$('#leftVoteImage, #rightVoteImage').attr('data-votetoken',data.voteToken);
+			$('#leftVoteImage').attr('src',data[0].cimage);
+			$('#leftVoteImage').attr('data-id', data[0].id);
+			$('#leftVoteName').html(data[0].name);
+
+			$('#rightVoteImage').attr('src',data[1].cimage);
+			$('#rightVoteImage').attr('data-id', data[1].id);
+			$('#rightVoteName').html(data[1].name);
+		}
+		
 		
 	});
 </script>

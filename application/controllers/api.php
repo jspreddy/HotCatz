@@ -63,7 +63,11 @@ class Api extends MY_Controller{
 				
 			}
 		} else {
-			$this->result["error"] = validation_errors();
+			$val_errors = validation_errors();
+			if($val_errors == ""){
+				$val_errors = "Bad request. Refresh and try again.";
+			}
+			$this->result["error"] = $val_errors;
 			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
 			return false;
 		}
@@ -75,7 +79,36 @@ class Api extends MY_Controller{
 	
 	public function getNewMatchup()
 	{
+		$this->load->model("user_model","user");
 		
+		$this->cat->order_by("catId_pk","RANDOM");
+		$this->cat->limit(2);
+		$cats = $this->cat->get_all();
+		
+		if(count($cats)< 2){
+			$this->result["error"]="Not enough Catz to vote on. Get more Catz to sign up!";
+			$this->result["data"]="";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		
+		$voteToken = random_string('alnum',TOKEN_SIZE);
+		$currentVoteForUser = array(
+			"voteToken"=>$voteToken,
+			"cat1_fk"=>$cats[0]->catId_pk,
+			"cat2_fk"=>$cats[1]->catId_pk
+			);
+		$this->user->update($this->_get_userId(), $currentVoteForUser);
+		
+		$this->result["data"]["matchup"]["voteToken"]=$voteToken;
+		
+		for($i=0;$i<2;$i++){
+			$this->result["data"]["matchup"][$i]["id"]=$cats[$i]->catId_pk;
+			$this->result["data"]["matchup"][$i]["name"]=$cats[$i]->cname;
+			$this->result["data"]["matchup"][$i]["cimage"]=base_url("/imagestore/".$cats[$i]->cimage);
+		}
+		
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
 	}
 	
 	public function leaderBoard()
@@ -85,10 +118,57 @@ class Api extends MY_Controller{
 	
 	public function vote()
 	{
+		$id = $this->security->xss_clean($this->input->post('id'));
+		$voteToken = $this->security->xss_clean($this->input->post('voteToken'));
 		
+		if( !is_int(intval($id)) ){
+			$this->result["error"]="Vote ImageId Error. Refresh and try again.";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		if(strlen($voteToken) !== TOKEN_SIZE){
+			$this->result["error"]="TokenSizeError. Refresh and try again.";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		$catId = intval($id);
+		$this->load->model("user_model","user");
+		
+		$userObj = $this->user->get($this->_get_userId());
+		if(!in_array($catId,array($userObj->cat1_fk, $userObj->cat2_fk))){
+			$this->result["error"]="Bad Request. Refresh and try again.";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		
+		if($userObj->voteToken !== $voteToken){
+			$this->result["error"]="VotingTokenError. Refresh and try again.";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		
+		$this->load->model("vote_model","vote");
+		
+		$voteStatus = $this->vote->insert(array(
+			"userId_fk"=>$this->_get_userId(),
+			"cat1_fk"=>$userObj->cat1_fk,
+			"cat2_fk"=>$userObj->cat2_fk,
+			"votedFor_fk"=>$catId,
+			"dateTime"=>date('Y-m-d H:i:s')
+		));
+		
+		$this->cat->incrementVoteWeightOn(1, $catId);
+		
+		if($voteStatus == false){
+			$this->result["error"]="Error Saving Vote. Refresh and try again.";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		
+		$this->user->update($this->_get_userId(),array("VoteToken"=>null, "cat1_fk"=>null, "cat2_fk"=>null));
+		
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
 	}
-	
-	
 	
 	private function _resize_and_crop($data)
 	{

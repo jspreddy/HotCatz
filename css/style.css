@@ -28,6 +28,9 @@ body{
 .clearFloat{
 	clear:both;
 }
+.displayNone{
+	display:none;
+}
 .mainHeader{
 	margin:0 auto;
 	background-image:url('../img/horz-line-bg.png');
@@ -111,12 +114,23 @@ body{
 	border:5px solid #FFFFFF;
 	position:relative;
 	width:48%;
+	transition: all 0.5s;
+	cursor:pointer;
+}
+.imageContainer:hover{
+	border:5px solid #2acc2a;
 }
 .leftImgShadow{
 	box-shadow: -11px 15px 16px -8px #bbbbbb;
 }
+.leftImgShadow:hover{
+	box-shadow: -14px 17px 16px -8px #707070;
+}
 .rightImgShadow{
 	box-shadow: 11px 15px 16px -8px #bbbbbb;
+}
+.rightImgShadow:hover{
+	box-shadow: 14px 17px 16px -8px #707070;
 }
 .bannerContainer{
 	width:100%;
