@@ -105,7 +105,7 @@ class Api extends MY_Controller{
 		
 		for($i=0;$i<2;$i++){
 			$this->result["data"]["matchup"][$i]["id"]=$cats[$i]->catId_pk;
-			$this->result["data"]["matchup"][$i]["name"]= character_limiter($cats[$i]->cname, 20);
+			$this->result["data"]["matchup"][$i]["name"]= ellipsize($cats[$i]->cname, 15,1);
 			$this->result["data"]["matchup"][$i]["cimage"]=base_url("/imagestore/".$cats[$i]->cimage);
 			$this->result["data"]["matchup"][$i]["voteweight"]=$cats[$i]->voteweight;
 		}
