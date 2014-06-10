@@ -233,7 +233,7 @@
 			});
 		}
 		getLeaderBoardData();
-		setTimeout(function(){getLeaderBoardData();}, 10000);
+		window.setInterval(getLeaderBoardData, 10000);
 		
 		function loadLeaderBoardData(data)
 		{
