@@ -25,6 +25,9 @@ body{
 .padding_0{
 	padding:0 !important;
 }
+.padding_13{
+	padding:13px !important;
+}
 .clearFloat{
 	clear:both;
 }
@@ -323,10 +326,11 @@ body{
 	width:93px;
 	position:relative;
 	float:left;
-	margin:0px 16px 10px 0px;
+	margin:0px 11px 10px 6px;
+	color:#38190b;
 }
 .lbImageContainer{
-	border:7px solid #FFFFFF;
+	border:4px solid #FFFFFF;
 	background-color:#FFFFFF;
 	height:95px;
 	width:93px;
@@ -335,19 +339,19 @@ body{
 }
 .lbBadgeContainer{
 	position:absolute;
-	top: 1px;
-	right: 1px;
+	top: -2px;
+	right: -2px;
 	width: 18px;
-	height: 5px;
+	height: 8px;
 }
 .lbItemIsMineBadge{
 	float:right;
-	height:5px;
-	width:5px;
+	height:8px;
+	width:8px;
 	background-color:#2acc2a;
 	display:none;
 }
-.lbInfoBox{
+.lbInfoBoxPopup{
 	position:absolute;
 	height:51px;
 	width:177px;
@@ -360,9 +364,12 @@ body{
 	padding:16px 8px;
 	color:#38190b;
 }
-.lbItemContainer:hover .lbInfoBox{
+.lbItemContainer:hover .lbInfoBoxPopup{
 	display:block;
 	top:-58%;
+}
+.lbInfoBoxAttached{
+	display:none;
 }
 .lbName{
 	height:19px;
@@ -371,11 +378,13 @@ body{
 	font-weight:bolder;
 	font-size:19px;
 	line-height:19px;
+	text-align:left;
 }
 .lbVotes{
 	height:19px;
 	width:70px;
 	float:left;
+	text-align:right;
 }
 .lbTail{
 	position:absolute;
@@ -390,10 +399,87 @@ body{
 .lbRank{
 	text-align:center;
 }
-.lbTop{
-	height:;
-	width:;
+.lbFeatured{
+	height:181px !important;
+	width:178px !important;
+	margin:0px 6px 18px 0px;
+}
+.lbFeatured > .lbImageContainer{
+	box-sizing: content-box;
+	border:7px solid #FFFFFF;
+	height:139px;
+	width:162px;
+	box-shadow: 0px 0px 24px -4px #727272;
+}
+.lbFeatured > .lbBadgeContainer{
+	top: 0px;
+	right: 2px;
+	width: 44px;
+	height: 5px;
 }
 
+.lbFeatured > .lbInfoBoxPopup{
+	position:relative;
+	display:none !important;
+	height:30px;
+	width:177px;
+	top:0px;
+	left:0px;
+	background-color:#FFFFFF;
+	padding:16px 8px;
+	color:#38190b;
+}
+.lbFeatured > .lbInfoBoxPopup:hover{
+	position:relative;
+	display:none !important;
+	height:30px;
+	width:177px;
+	top:0px;
+	left:0px;
+	background-color:#FFFFFF;
+	padding:16px 8px;
+	color:#38190b;
+	box-shadow:0px 0px 0px 0px #FFFFFF;
+}
+.lbFeatured > .lbInfoBoxPopup > .lbTail{
+	display:none;
+}
+.lbFeatured > .lbRank{
+	display:none;
+}
+.lbFeatured > .lbInfoBoxAttached{
+	position:relative;
+	display:block;
+	height:30px;
+	width:177px;
+	background-color:#FFFFFF;
+	padding:3px 8px;
+	color:#38190b;
+}
+
+.ribbon{
+	display:none;
+	height:63px;
+	width:38px;
+	position:absolute;
+	top: -7px;
+	right: 14px;
+}
+
+.gold{
+	background-image:url('../img/1ribbon.png');
+	background-image:no-repeat;
+	background-position:center;
+}
+.silver{
+	background-image:url('../img/2ribbon.png');
+	background-image:no-repeat;
+	background-position:center;
+}
+.bronze{
+	background-image:url('../img/3ribbon.png');
+	background-image:no-repeat;
+	background-position:center;
+}
 /* End of file style.css */
 /* Location:  /css/style.css */

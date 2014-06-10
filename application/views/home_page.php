@@ -69,7 +69,7 @@
 		<div class="segmentTitle leaderBoardTitle">
 			<img src="<?php echo base_url('/img/leaderBoard.png'); ?>" height="100%" width="100%" />
 		</div>
-		<div class="well segmentContentContainer" id="lbContent">
+		<div class="well segmentContentContainer padding_13" id="lbContent">
 		</div>
 	</div>
 </div>
@@ -219,15 +219,26 @@
 		{
 			$('#lbContent').html("");
 			var i=1;
-			console.log(data);
+			//console.log(data);
 			data.forEach(function(itemData){
-				console.log(itemData);
+				//console.log(itemData);
 				var item = $('#lbItemContainer').clone();
 				item.attr('id',itemData.catId);
 				item.find('.lbImage').attr('src',itemData.cimage);
 				item.find('.lbName').html(itemData.cname);
 				item.find('.lbVotes').html(itemData.voteweight+" votes");
 				item.find('.lbRank').html("#"+i);
+				if(i>0 && i<=3){
+					item.addClass('lbFeatured');
+					switch(i){
+						case 1: item.find('.gold').show();
+							break;
+						case 2: item.find('.silver').show();
+							break;
+						case 3: item.find('.bronze').show();
+							break;
+					}
+				}
 				if(itemData.isMine){
 					item.find('.lbItemIsMineBadge').show();
 				}
@@ -243,15 +254,22 @@
 <div class="displayNone">
 	<div class="lbItemContainer" id="lbItemContainer">
 		<div class="lbImageContainer">
-			<img class="lbImage" src="" height="100%" width="100%" />
+			<img class="lbImage" src="" width="100%" />
 		</div>
 		<div class="lbBadgeContainer">
 			<div class="lbItemIsMineBadge"></div>
+			<div class="ribbon gold"></div>
+			<div class="ribbon silver"></div>
+			<div class="ribbon bronze"></div>
 		</div>
-		<div class="lbInfoBox">
+		<div class="lbInfoBoxPopup">
 			<div class="lbName">Name</div>
 			<div class="lbVotes">1240</div>
 			<div class="lbTail"></div>
+		</div>
+		<div class="lbInfoBoxAttached">
+			<div class="lbName">Name</div>
+			<div class="lbVotes">1240</div>
 		</div>
 		<div class="lbRank">#5</div>
 	</div>
