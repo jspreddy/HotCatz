@@ -69,7 +69,8 @@
 		<div class="segmentTitle leaderBoardTitle">
 			<img src="<?php echo base_url('/img/leaderBoard.png'); ?>" height="100%" width="100%" />
 		</div>
-		<div class="well segmentContentContainer"></div>
+		<div class="well segmentContentContainer" id="lbContent">
+		</div>
 	</div>
 </div>
 
@@ -141,6 +142,7 @@
 				else{
 					$('#uploadedImage').attr("src",returnData.data.newUpload.imageLink);
 					$('#uploadResult').html("<b>"+returnData.data.newUpload.catName+"</b> has been enlisted!").addClass('text-success').removeClass('text-danger');
+					getLeaderBoardData();
 				}
 			});
 			
@@ -163,6 +165,7 @@
 				else{
 					//alertBox.success("Voting success.");
 					getNewMatchup();
+					getLeaderBoardData();
 				}
 			});
 		});
@@ -195,10 +198,64 @@
 			$('#rightVoteName').html(data[1].name);
 		}
 		
+		function getLeaderBoardData()
+		{
+			$.ajax({
+				url: "<?php echo site_url('/api/getLeaderBoardData');?>",
+				type: "POST"
+			}).done(function(returnData){
+				if(returnData.error !== ""){
+					alertBox.error(returnData.error);
+				}
+				else{
+					loadLeaderBoardData(returnData.data.leaderBoard);
+				}
+			});
+		}
+		getLeaderBoardData();
+		setTimeout(function(){getLeaderBoardData();}, 10000);
+		
+		function loadLeaderBoardData(data)
+		{
+			$('#lbContent').html("");
+			var i=1;
+			console.log(data);
+			data.forEach(function(itemData){
+				console.log(itemData);
+				var item = $('#lbItemContainer').clone();
+				item.attr('id',itemData.catId);
+				item.find('.lbImage').attr('src',itemData.cimage);
+				item.find('.lbName').html(itemData.cname);
+				item.find('.lbVotes').html(itemData.voteweight+" votes");
+				item.find('.lbRank').html("#"+i);
+				if(itemData.isMine){
+					item.find('.lbItemIsMineBadge').show();
+				}
+				$('#lbContent').append(item);
+				i++;
+			});
+			$('#lbContent').append("<div class='clearFloat'></div>");
+		}
 		
 	});
 </script>
 
+<div class="displayNone">
+	<div class="lbItemContainer" id="lbItemContainer">
+		<div class="lbImageContainer">
+			<img class="lbImage" src="" height="100%" width="100%" />
+		</div>
+		<div class="lbBadgeContainer">
+			<div class="lbItemIsMineBadge"></div>
+		</div>
+		<div class="lbInfoBox">
+			<div class="lbName">Name</div>
+			<div class="lbVotes">1240</div>
+			<div class="lbTail"></div>
+		</div>
+		<div class="lbRank">#5</div>
+	</div>
+</div>
 <?php
 /* End of file home_page.php */
 /* Location:  ./application/views/home_page.php*/

@@ -12,6 +12,7 @@ class Api extends MY_Controller{
 		$this->result["data"]="";
 		$this->load->library('form_validation');
 		$this->load->model("cat_model","cat");
+		$this->load->helper('text');
 	}
 	
 	public function index()
@@ -104,7 +105,7 @@ class Api extends MY_Controller{
 		
 		for($i=0;$i<2;$i++){
 			$this->result["data"]["matchup"][$i]["id"]=$cats[$i]->catId_pk;
-			$this->result["data"]["matchup"][$i]["name"]=$cats[$i]->cname;
+			$this->result["data"]["matchup"][$i]["name"]= character_limiter($cats[$i]->cname, 20);
 			$this->result["data"]["matchup"][$i]["cimage"]=base_url("/imagestore/".$cats[$i]->cimage);
 			$this->result["data"]["matchup"][$i]["voteweight"]=$cats[$i]->voteweight;
 		}
@@ -112,9 +113,27 @@ class Api extends MY_Controller{
 		$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
 	}
 	
-	public function leaderBoard()
+	public function getLeaderBoardData()
 	{
+		$this->load->model("vote_model","vote");
 		
+		$this->cat->order_by('voteweight','desc');
+		$leaderBoard = $this->cat->get_all();
+		
+		if(count($leaderBoard)<1){
+			$this->result["error"]="No cats in the race... -_-. Bring in the mice, that should be enough motivation.";
+			$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
+			return false;
+		}
+		
+		for($i=0; $i<count($leaderBoard); $i++){
+			$this->result["data"]["leaderBoard"][$i]["catId"]=$leaderBoard[$i]->catId_pk;
+			$this->result["data"]["leaderBoard"][$i]["isMine"]= ( $this->_get_userId() == $leaderBoard[$i]->userId_fk ? true : false ) ;
+			$this->result["data"]["leaderBoard"][$i]["cname"]=character_limiter($leaderBoard[$i]->cname, 6);
+			$this->result["data"]["leaderBoard"][$i]["voteweight"]=$leaderBoard[$i]->voteweight;
+			$this->result["data"]["leaderBoard"][$i]["cimage"]=base_url("/imagestore/".$leaderBoard[$i]->cimage);
+		}
+		$this->output->set_content_type('application/json')->set_output(json_encode($this->result));
 	}
 	
 	public function vote()

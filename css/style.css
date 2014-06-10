@@ -318,6 +318,82 @@ body{
 	box-shadow: 1px 1px 11px -5px #000000 inset;
 }
 
+.lbItemContainer{
+	height:113px;
+	width:93px;
+	position:relative;
+	float:left;
+	margin:0px 16px 10px 0px;
+}
+.lbImageContainer{
+	border:7px solid #FFFFFF;
+	background-color:#FFFFFF;
+	height:95px;
+	width:93px;
+	overflow:hidden;
+	box-shadow:0px 0px 10px -2px #aaaaaa;
+}
+.lbBadgeContainer{
+	position:absolute;
+	top: 1px;
+	right: 1px;
+	width: 18px;
+	height: 5px;
+}
+.lbItemIsMineBadge{
+	float:right;
+	height:5px;
+	width:5px;
+	background-color:#2acc2a;
+	display:none;
+}
+.lbInfoBox{
+	position:absolute;
+	height:51px;
+	width:177px;
+	display:none;
+	top:-50%;
+	left:-50%;
+	transition:all 1s;
+	background-color:#FFFFFF;
+	box-shadow: 0px 4px 15px 2px #8F8F8F;
+	padding:16px 8px;
+	color:#38190b;
+}
+.lbItemContainer:hover .lbInfoBox{
+	display:block;
+	top:-58%;
+}
+.lbName{
+	height:19px;
+	width:91px;
+	float:left;
+	font-weight:bolder;
+	font-size:19px;
+	line-height:19px;
+}
+.lbVotes{
+	height:19px;
+	width:70px;
+	float:left;
+}
+.lbTail{
+	position:absolute;
+	height:35px;
+	width:51px;
+	top: 100%;
+	left: 67px;
+	background-image:url('../img/popUpTriangle.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.lbRank{
+	text-align:center;
+}
+.lbTop{
+	height:;
+	width:;
+}
 
 /* End of file style.css */
 /* Location:  /css/style.css */
