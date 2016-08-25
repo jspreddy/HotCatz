@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Migration_Create_user_table extends CI_Migration {
+class Migration_Create_vote_table extends CI_Migration {
 
 	public function up()
 	{

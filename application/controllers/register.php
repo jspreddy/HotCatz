@@ -1,12 +1,16 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Register extends CI_Controller{
+class Register extends Public_Controller{
 	private $email_verifications;
 	
 	public function __construct()
 	{
 		parent::__construct();
-		$this->migration->latest();
+		if ( ! $this->migration->latest())
+		{
+			show_error($this->migration->error_string());
+			exit;
+		}
 		$this->output->nocache();
 		$this->load->library('form_validation');
 		if($this->session->userdata('logged_in'))
@@ -33,22 +37,22 @@ class Register extends CI_Controller{
 			array(
 				  'field'   => 'username',
 				  'label'   => 'Email Id',
-				  'rules'   => 'trim|required|matches[retype_username]|is_unique[user.uname]|xss_clean'
+				  'rules'   => 'trim|required|matches[retype_username]|is_unique[user.uname]'
 			   ),
 			array(
 				  'field'   => 'retype_username',
 				  'label'   => 'Email confirmation',
-				  'rules'   => 'trim|required|xss_clean'
+				  'rules'   => 'trim|required'
 			   ),
 			array(
 				  'field'   => 'password',
 				  'label'   => 'Password',
-				  'rules'   => 'trim|required|matches[password_conf]|min_length[5]|max_length[15]|alpha_numeric|xss_clean'
+				  'rules'   => 'trim|required|matches[password_conf]|min_length[5]|max_length[15]|alpha_numeric'
 			   ),
 			array(
 				  'field'   => 'password_conf',
 				  'label'   => 'Password confirmation',
-				  'rules'   => 'trim|required|xss_clean'
+				  'rules'   => 'trim|required'
 			   )
 		 );
 		$this->form_validation->set_error_delimiters('<li>', '</li>');
@@ -70,7 +74,7 @@ class Register extends CI_Controller{
 			// save data and email verification.
 			$save_data["uname"] = $this->input->post("username");
 			$save_data["email_verified"] = $email_verified;
-			$save_data["passwd"] = $this->encrypt->sha1($this->input->post("password"));
+			$save_data["passwd"] = $this->encrypt->hash($this->input->post("password"));
 			$save_data["veri_code"] = random_string('alnum',TOKEN_SIZE);
 			
 			$result = $this->user->insert($save_data);

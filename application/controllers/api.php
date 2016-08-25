@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Api extends MY_Controller{
+class Api extends Private_Controller{
 	
 	private $result=array();
 	
@@ -27,7 +27,7 @@ class Api extends MY_Controller{
 		$upload_config['encrypt_name'] = true;
 		$upload_config['remove_spaces'] = true;
 		
-		$this->form_validation->set_rules("catname", "Cat's name", "trim|required|min_length[2]|max_length[50]|is_unique[cat.cname]|xss_clean" );
+		$this->form_validation->set_rules("catname", "Cat's name", "trim|required|min_length[2]|max_length[50]|is_unique[cat.cname]" );
 		
 		if ($this->form_validation->run() == TRUE) {
 			$catname = $this->input->post('catname');
@@ -209,7 +209,7 @@ class Api extends MY_Controller{
 		}
 		
 		$this->image_lib->initialize($config);
-		if(  !$this->image_lib->resize() ){
+		if( $this->image_lib->resize() == false ){
 			return $this->image_lib->display_errors();
 		}
 		
@@ -220,7 +220,7 @@ class Api extends MY_Controller{
 		$config['maintain_ratio'] = FALSE;
 		$this->image_lib->initialize($config);
 		
-		if(!$this->image_lib->crop()){
+		if( $this->image_lib->crop() == false ){
 			return $this->image_lib->display_errors();
 		}
 		

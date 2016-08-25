@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Auth extends CI_Controller{
+class Auth extends Public_Controller{
 	public $data = array(
 		'login_title'=>APPLICATION_NAME,
 		'msg'=>''
@@ -9,7 +9,11 @@ class Auth extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		$this->migration->latest();
+		if ( ! $this->migration->latest())
+		{
+			show_error($this->migration->error_string());
+			exit;
+		}
 		$this->output->nocache();
 	}
 	
@@ -60,7 +64,7 @@ class Auth extends CI_Controller{
 		}
 		
 		$this->load->library('encrypt');
-		$enc_pass = $this->encrypt->sha1($password);
+		$enc_pass = $this->encrypt->hash($password);
 
 		if($row->passwd == $enc_pass){
 			$this->session->set_userdata('userid',intval($row->userId_pk));
