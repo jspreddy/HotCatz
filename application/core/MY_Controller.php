@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller{
 	{
 		parent::__construct();
 		$this->output->nocache();
+		$this->migration->latest();
 		
 		if(!$this->session->userdata('logged_in')){
 			$this->session->sess_destroy();

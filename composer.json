@@ -1,0 +1,15 @@
+{
+    "name": "sai/hot-catz",
+    "type": "application",
+    "license": "propreitery",
+    "authors": [
+        {
+            "name": "Sai Phaninder Reddy Jonnala",
+            "email": "jspreddy@yahoo.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "codeigniter/framework": "^3.1"
+    }
+}
