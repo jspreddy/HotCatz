@@ -10,3 +10,4 @@ imagestore/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
+/.idea/*
